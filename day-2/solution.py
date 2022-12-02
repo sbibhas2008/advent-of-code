@@ -70,27 +70,29 @@ def my_total_score(input):
             scores.append(6+my_map[item[1]]['score'])
         else:
             scores.append(my_map[item[1]]['score'])
-    print('My score:', sum(scores))
+    return sum(scores)
 
 def my_total_score_2(input):
-    input_2 = []
+    prepared_input = []
     for item in input:
         outcome = my_map[item[1]]['outcome']
-        opponent_move = part2_draw[item[0]]
         if outcome == 'draw':
-            input_2.append([item[0], opponent_move])
+            prepared_input.append([item[0], part2_draw[item[0]]])
         elif outcome == 'win':
-            input_2.append([item[0], part2_loser[item[0]]])
+            prepared_input.append([item[0], part2_loser[item[0]]])
         else:
             pass
-            input_2.append([item[0], part2_winner[item[0]]])
+            prepared_input.append([item[0], part2_winner[item[0]]])
     # Resuing first solution
-    my_total_score(input_2)
+    return my_total_score(prepared_input)
 
 if __name__ == '__main__':
     with open('input.txt', 'r') as f:
         input = f.read()
     input = refine_input(input)
-    my_total_score(input)
-    my_total_score_2(input)
+    score_1 = my_total_score(input)
+    score_2 = my_total_score_2(input)
+    print('Answer 1:', score_1)
+    print('Answer 2:', score_2)
+
 
