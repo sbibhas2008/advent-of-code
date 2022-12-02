@@ -81,7 +81,6 @@ def my_total_score_2(input):
         elif outcome == 'win':
             prepared_input.append([item[0], part2_loser[item[0]]])
         else:
-            pass
             prepared_input.append([item[0], part2_winner[item[0]]])
     # Resuing first solution
     return my_total_score(prepared_input)
